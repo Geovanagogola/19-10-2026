@@ -1,0 +1,24 @@
+<script>
+function criptografar() {
+  const input = document.getElementById('inputText').value.toUpperCase();
+  let resultado = '';
+
+  for (let i = 0; i < input.length; i++) {
+    let codigo = input.charCodeAt(i);
+
+    // Verifica se o caractere é uma letra de A a Z (ASCII 65 a 90)
+    if (codigo >= 65 && codigo <= 90) {
+      // Aplica o deslocamento +3 com rotação no alfabeto ((código - 65 + 3) % 26 + 65)
+      let novoCodigo = ((codigo - 65 + 3) % 26) + 65;
+      resultado += String.fromCharCode(novoCodigo);
+    } else {
+      // Mantém espaços, números e pontuações sem alterar
+      resultado += input[i];
+    }
+  }
+
+  // Exibe o resultado na interface
+  document.getElementById('outputText').innerText = resultado;
+  document.getElementById('output').style.display = 'block';
+}
+</script>
